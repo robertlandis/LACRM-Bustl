@@ -10,19 +10,17 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	Dimensions,
 	Button,
 	AsyncStorage
 } from 'react-native';
 import _ from 'lodash';
 
 var keys = [];
+var watchId = null;
 
 export default class bustl2 extends Component {
 
 	state = {
-		initialPosition: 'unknown',
-		lastPosition: 'unknown',
 		region: {
 			latitude: 37.78825,
 			longitude: -122.4324,
@@ -30,8 +28,6 @@ export default class bustl2 extends Component {
 			longitudeDelta: 0.0421,
 		}
 	}
-
-
 
 	componentWillMount() {
 		navigator.geolocation.getCurrentPosition(
@@ -53,12 +49,11 @@ export default class bustl2 extends Component {
 	}
 
 	StartTrackingLocation(){
-		this.watchID = navigator.geolocation.watchPosition((position) => {
-			this.setState({lastPosition: position});
-			console.log("positoin", position);
+		watchId = navigator.geolocation.watchPosition((position) => {
+			console.log("position", position);
 			try {
-				AsyncStorage.setItem('@LastLocation'+position.timestamp, JSON.stringify(position));
-				keys.push('@LastLocation'+position.timestamp)
+				AsyncStorage.setItem(position.timestamp.toString(), JSON.stringify(position));
+				keys.push(position.timestamp.toString())
 			} catch (error){
 				console.log("There was an error", error);
 			}
@@ -66,9 +61,9 @@ export default class bustl2 extends Component {
 	}
 
 	StopTrackingLocation(){
-		navigator.geolocation.clearWatch(this.watchId);
-		var data = AsyncStorage.multiGet(keys, function(data2, stores){
-			console.log("what did we get", stores);
+		navigator.geolocation.clearWatch(watchId);
+		var data = AsyncStorage.multiGet(keys, function(error, stores){
+			console.log("saved data", stores);
 			var http = new XMLHttpRequest();
 			var url = "https://devwww.lessannoyingcrm.com/test/hackathon.php";
 			var params = "testdata="+JSON.stringify(stores);
@@ -83,20 +78,25 @@ export default class bustl2 extends Component {
 				}
 			}
 			http.send(params);
-			// fetch('https://devwww.lessannoyingcrm.com/test/hackathon.php', {
-			// 	method: 'POST',
-			// 	body: JSON.stringify(stores)
-			// }, function(){});
+      keys = [];
 		});
 	}
 
 	render() {
-		return (
+		/*return (
             <View style={styles.container}>
               <Button title="Click me to start" onPress={_.bind(this.StartTrackingLocation, this)}/>
               <Button title="Click me to stop" onPress={_.bind(this.StopTrackingLocation, this)}/>
             </View>
-		);
+		);*/
+
+    return (
+      <View>
+        <View>
+          bustl
+        </View>
+      </View>
+    );
 	}
 }
 
@@ -106,20 +106,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#F5FCFF',
-	},
-	welcome: {
-		fontSize: 20,
-		textAlign: 'center',
-		margin: 10,
-	},
-	instructions: {
-		textAlign: 'center',
-		color: '#333333',
-		marginBottom: 5,
-	},
-	map: {
-		width: Dimensions.get('window').width,
-		height: Dimensions.get('window').height
 	}
 });
 
