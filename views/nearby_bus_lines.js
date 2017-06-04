@@ -7,7 +7,7 @@ import {
 	Button,
 	AsyncStorage,
 	Image,
-	ScrollView
+	FlatList
 } from 'react-native';
 import _ from 'lodash';
 
@@ -19,15 +19,17 @@ const NearbyBusLines = React.createClass({
 		return {
 			"NearestLines":[
 				{
-					RouteName:"Earth City",
-					RouteNumber:"34",
-					RouteHeadsign:"To Hampton Loop"
+					route_id:1,
+					route_long_name:"Earth City",
+					route_short_name:"34",
+					trip_headsign:"To Hampton Loop"
 				},
 				{
-					RouteName:"Earth City",
-					RouteNumber:"34",
-					RouteHeadsign:"To Chesterfield Valley"
-				}
+					route_id:2,
+					route_long_name:"Earth City",
+					route_short_name:"34",
+					trip_headsign:"To Chesterfield Valley"
+				}	
 			]
 		}
 	},
@@ -35,20 +37,12 @@ const NearbyBusLines = React.createClass({
 
 	render: function(){
 
-		var NearestLineRows = [];
-		var i = 0;
-
-		_.each(this.state.NearestLines, function(ThisLine){
-			NearestLineRows.push(
-				<NearbyBusLineRow key={i} LineInfo={ThisLine} />
-			)
-			i++;
-		});
-
 		return(
-			<ScrollView style={{flexDirection:'column'}}>
-				{NearestLineRows}
-			</ScrollView>
+			<FlatList
+				data={this.props.NearbyRoutes}
+				renderItem={({item}) => <NearbyBusLineRow LineInfo={item} />}
+				keyExtractor={(item, index) => item.trip_id}
+			/>
 		);
 	}
 

@@ -6,7 +6,8 @@ import {
 	View,
 	Button,
 	AsyncStorage,
-	Image
+	Image,
+	TouchableOpacity
 } from 'react-native';
 import _ from 'lodash';
 
@@ -14,16 +15,27 @@ import _ from 'lodash';
 const ProgressBarItem = React.createClass({
 	
 	contextTypes: {
-		CurrentStep: React.PropTypes.number
+		CurrentStep: React.PropTypes.number,
+		ChangePage: React.PropTypes.func
 	},
 
 	render: function(){
 
-		return(
-			<View style={[styles.ProgressBarItem, this.context.CurrentStep == this.props.Step && styles.HighlighedProgressBarItem]}>
-				<Text style={[styles.StepText, this.context.CurrentStep == this.props.Step && styles.CurrentStepText]}>Step {this.props.Step}</Text>
-			</View>
-		);
+		if(this.props.Step < this.context.CurrentStep){
+			var OnPressFunction = _.partial(this.context.ChangePage, this.props.Step);
+			return(
+				<TouchableOpacity style={[styles.ProgressBarItem, this.context.CurrentStep == this.props.Step && styles.HighlighedProgressBarItem]} onPress={OnPressFunction}>
+					<Text style={[styles.StepText, this.context.CurrentStep == this.props.Step && styles.CurrentStepText]}>Step {this.props.Step}</Text>
+				</TouchableOpacity>
+			);
+		} else {
+			return(
+				<View style={[styles.ProgressBarItem, this.context.CurrentStep == this.props.Step && styles.HighlighedProgressBarItem]} onPress={OnPressFunction}>
+					<Text style={[styles.StepText, this.context.CurrentStep == this.props.Step && styles.CurrentStepText]}>Step {this.props.Step}</Text>
+				</View>
+			);
+		}
+
 	}
 
 });

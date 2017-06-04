@@ -1,10 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
+
 import {
 	AppRegistry,
 	StyleSheet,
@@ -14,6 +9,9 @@ import {
 import Page1 from './views/page_1';
 import ChooseRoutePage from './views/choose_route_page';
 import ChooseEndingStopPage from './views/choose_ending_stop_page'
+import Page3 from './views/page_3';
+import OnTheBusPage from './views/on_the_bus_page';
+
 
 const bustl = React.createClass({
 	getInitialState: function(){
@@ -44,16 +42,19 @@ const bustl = React.createClass({
 
 		switch(this.state.CurrentPage){
 			case 0:
-				ComponentToLoad = <Page1 onChangePage={this.ChangePage} />;
+				ComponentToLoad = <Page1 />;
 				break;
 			case 1:
 				ComponentToLoad = <ChooseRoutePage />;
 				break;
 			case 2:
-				ComponentToLoad = <Page1 onChangePage={this.ChangePage} />
+				ComponentToLoad = <Page3 />
 				break;
 			case 3:
 				ComponentToLoad = <ChooseEndingStopPage />
+				break;
+			case 4:
+				ComponentToLoad = <OnTheBusPage />;
 				break;
 			default:
 				break;
