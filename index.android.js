@@ -10,6 +10,8 @@ import Page1 from './views/page_1';
 import ChooseRoutePage from './views/choose_route_page';
 import ChooseEndingStopPage from './views/choose_ending_stop_page'
 import Page3 from './views/page_3';
+import OnTheBusPage from './views/on_the_bus_page';
+
 
 const bustl = React.createClass({
 	getInitialState: function(){
@@ -50,6 +52,9 @@ const bustl = React.createClass({
 				break;
 			case 3:
 				ComponentToLoad = <ChooseEndingStopPage />
+				break;
+			case 4:
+				ComponentToLoad = <OnTheBusPage />;
 				break;
 			default:
 				break;

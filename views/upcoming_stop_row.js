@@ -33,7 +33,7 @@ const UpcomingStopRow = React.createClass({
 			);
 		} else {
 			return(
-				<TouchableOpacity style={styles.UpcomingStopRow} onPress={_.partial(this.context.ChangePage, 0)}>
+				<TouchableOpacity style={styles.UpcomingStopRow} onPress={_.partial(this.context.ChangePage, 4)}>
 					<View style={{flexDirection:'row', justifyContent:'flex-start'}}>
 						<Text style={styles.BulletPoint}>•</Text>
 						<View style={{flexDirection:'column', justifyContent:'space-around'}}>

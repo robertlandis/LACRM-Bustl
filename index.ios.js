@@ -50,7 +50,10 @@ const bustl = React.createClass({
 				ComponentToLoad = <Page3 />;
 				break;
 			case 3:
-				ComponentToLoad = <ChooseEndingStopPage  />
+				ComponentToLoad = <ChooseEndingStopPage  />;
+				break;
+			case 4:
+				ComponentToLoad = <OnTheBusPage />;
 				break;
 			default:
 				break;
