@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -38,7 +39,7 @@
 		57BBA3881C184D35BA5237DE /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B543DF25DB20426A88DDAFD5 /* Roboto-Thin.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		650537F624BE4389B593EDDC /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3D7B46A08A144329822A229 /* Roboto-Light.ttf */; };
-		67CCA8791EE344B90086B720 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB61A68108700A75B9A /* Info.plist */; };
+		67CCA9051EE371130086B720 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB61A68108700A75B9A /* Info.plist */; };
 		69BCF0EE255743E4B87FD0C5 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CAAAA210ED6C454AA678AF7D /* Roboto-Bold.ttf */; };
 		7C2E9177EF1D4CD5A3CE2514 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34E9D532C7A2476993F7AC68 /* Roboto-Regular.ttf */; };
 		7D037D4FA4184D85ABA9B863 /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A96B88306BE0403BB96E6563 /* RobotoSlab-Bold.ttf */; };
@@ -909,7 +910,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				67CCA8791EE344B90086B720 /* Info.plist in Resources */,
 				D7BA4A141295497F8305459D /* Roboto-Black.ttf in Resources */,
 				9F233B66857143378E67F438 /* Roboto-BlackItalic.ttf in Resources */,
 				69BCF0EE255743E4B87FD0C5 /* Roboto-Bold.ttf in Resources */,
@@ -917,6 +917,7 @@
 				1149DC8EC2BA4215AAA76E0B /* Roboto-Italic.ttf in Resources */,
 				650537F624BE4389B593EDDC /* Roboto-Light.ttf in Resources */,
 				E9865D946D2349BEB9139DFE /* Roboto-LightItalic.ttf in Resources */,
+				67CCA9051EE371130086B720 /* Info.plist in Resources */,
 				E5447EE24AC0423F9B6DAF9B /* Roboto-Medium.ttf in Resources */,
 				FC05A0FB25CE456FB81A8564 /* Roboto-MediumItalic.ttf in Resources */,
 				7C2E9177EF1D4CD5A3CE2514 /* Roboto-Regular.ttf in Resources */,
