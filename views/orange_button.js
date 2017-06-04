@@ -6,7 +6,7 @@ import {
 	TouchableOpacity
 } from 'react-native';
 
-const GrayButton = React.createClass({
+const OrangeButton = React.createClass({
 
 	getDefaultProps: function(){
 		return {
@@ -43,4 +43,4 @@ const GrayButton = React.createClass({
 	}
 });
 
-module.exports = GrayButton;
+module.exports = OrangeButton;
