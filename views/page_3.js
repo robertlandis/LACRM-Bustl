@@ -17,6 +17,10 @@ import HorizontalRule from './horizontal_rule';
 
 const Page3 = React.createClass({
 
+	contextTypes: {
+		ChangePage: React.PropTypes.func
+	},
+
 	BusStops: [
 		{
 			"Name": "18TH ST @ PINE NB",
@@ -77,6 +81,7 @@ const Page3 = React.createClass({
 
 	HandlePress: function(StopId){
 		console.log("onPress", StopId);
+		this.context.ChangePage(3, {StopId: StopId});
 	},
 
 	render: function(){

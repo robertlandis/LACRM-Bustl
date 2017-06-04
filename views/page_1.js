@@ -79,6 +79,10 @@ const Page1 = React.createClass({
 		});
 	},*/
 
+	contextTypes: {
+		ChangePage: React.PropTypes.func
+	},
+
 	render: function(){
 		return(
 		<View>
@@ -114,7 +118,7 @@ const Page1 = React.createClass({
 				<Text style={[styles.infoText, {
 					marginBottom: 5
 				}]}>Have your route and ready to get on the road?</Text>
-				<OrangeButton OnPress={_.partial(this.props.onChangePage, 1)}>Start Ride</OrangeButton>
+				<OrangeButton OnPress={_.partial(this.context.ChangePage, 1)}>Start Ride</OrangeButton>
 			</View>
 		</View>
 		);
