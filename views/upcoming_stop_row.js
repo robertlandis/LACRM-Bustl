@@ -19,7 +19,12 @@ const UpcomingStopRow = React.createClass({
 
 	render: function(){		
 
-		var StopInfo = this.props.StopInfo
+		var StopInfo = this.props.StopInfo;
+
+		var StartingStop = new Date("October 13, 1975 "+this.props.FirstStop.arrival_time);
+		var ArrivalTime = new Date("October 13, 1975 "+StopInfo.arrival_time);
+
+		var MinutesAway = Math.floor((ArrivalTime - StartingStop)/1000/60);
 
 		if(this.props.StopIndex == 0){
 			return(
@@ -27,7 +32,7 @@ const UpcomingStopRow = React.createClass({
 					<Text style={styles.BulletPoint}>•</Text>
 					<View style={{flexDirection:'column', justifyContent:'space-around'}}>
 						<Text style={{fontSize:16}}>Starting point:</Text>
-						<Text style={[styles.Headsign, {top:-3}]}>{StopInfo.StopName}</Text>
+						<Text style={[styles.Headsign, {top:-3}]}>{StopInfo.stop_name}</Text>
 					</View>
 				</View>
 			);
@@ -37,11 +42,11 @@ const UpcomingStopRow = React.createClass({
 					<View style={{flexDirection:'row', justifyContent:'flex-start'}}>
 						<Text style={styles.BulletPoint}>•</Text>
 						<View style={{flexDirection:'column', justifyContent:'space-around'}}>
-							<Text style={styles.Headsign}>{StopInfo.StopName}</Text>
+							<Text style={styles.Headsign}>{StopInfo.stop_name}</Text>
 						</View>
 					</View>
 					<View style={{padding:3, paddingLeft:5, paddingRight:10}}>
-						<Text style={styles.Extrainfo}>{StopInfo.MinutesAway} mins</Text>
+						<Text style={styles.Extrainfo}>{MinutesAway} mins</Text>
 						<Text style={styles.Extrainfo}>{this.props.StopIndex} stops</Text>
 					</View>
 				</TouchableOpacity>
@@ -84,7 +89,7 @@ const styles = StyleSheet.create({
 	},
 
 	Headsign: {
-		fontSize: 20,
+		fontSize: 12,
 		color:'black'
 	},
 

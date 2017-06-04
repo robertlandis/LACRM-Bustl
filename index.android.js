@@ -47,7 +47,7 @@ const bustl = React.createClass({
 			case 1:
 				ComponentToLoad = <ChooseRoutePage />;
 				break;
-			case 2:
+			case 2:		
 				ComponentToLoad = <Page3 TripId={this.state.CurrentPageProps.TripId} />;
 				break;
 			case 3:

@@ -29,12 +29,15 @@ const Page3 = React.createClass({
 	},
 
 	componentWillMount: function(){
+
+		var TripId = this.props.TripId;
 		var SetPage3State = _.bind(this.setState, this);
 
 		GetLocation(function(position){
-			CallApi("GetNearbyStops", {
+			CallApi("GetNearbyStopsForTrip", {
 				CurrentLat: position.coords.latitude.toString(),
-				CurrentLon: position.coords.longitude.toString()
+				CurrentLon: position.coords.longitude.toString(),
+				TripId:TripId,
 			}, function(Result){
 				SetPage3State({stops: Result});
 			});
