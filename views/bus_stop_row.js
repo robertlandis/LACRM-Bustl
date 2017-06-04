@@ -13,7 +13,7 @@ import HorizontalRule from './horizontal_rule';
 const BusStopRow = React.createClass({
 
 	HandlePress: function(){
-		this.props.OnPress(this.props.data.stop_id);
+		this.props.OnPress(this.props.data);
 	},
 
 	render: function(){

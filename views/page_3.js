@@ -41,12 +41,11 @@ const Page3 = React.createClass({
 		});	
 	},
 
-	HandlePress: function(StopId){
-		this.context.ChangePage(3, {StopId: StopId});
+	HandlePress: function(Stop){
+		this.context.ChangePage(3, {Stop: Stop, TripId: this.props.TripId});
 	},
 
 	render: function(){
-
 		if(this.state.stops == null){
 			return (<View></View>);
 		}

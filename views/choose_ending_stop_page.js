@@ -16,7 +16,6 @@ import StopsOnThisRoute from './stops_on_this_route'
 const ChooseEndingStopPage = React.createClass({	
 	
 	render: function(){
-
 		return(
 			<View style={{flexDirection:'column', justifyContent:'flex-end'}}>
 				<ProgressBar style={{height:100}} CurrentStep={3} />

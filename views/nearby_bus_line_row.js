@@ -18,7 +18,6 @@ const NearbyBusLineRow = React.createClass({
 	},
 
 	render: function(){		
-
 		var LineInfo = this.props.LineInfo
 
 		return(
