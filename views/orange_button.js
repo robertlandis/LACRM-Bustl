@@ -11,34 +11,34 @@ const OrangeButton = React.createClass({
 	getDefaultProps: function(){
 		return {
 			OnPress: function(){},
-			height: 110,
-			width: 325,
-			padding: 27,
-			fontSize: 48
+			Height: 110,
+			Width: 325,
+			Padding: 27,
+			FontSize: 48
 		};
 	},
 
-	buttonStyle: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		height: 110,
-		width: 325,
-		padding: 27,
-		backgroundColor: '#e67e22',
-		alignItems: 'center',
-		fontSize: 48,
-		fontFamily: 'Roboto',
-		color: 'white',
-		textAlign: 'center',
-		fontWeight: 'bold',
-		textShadowColor: 'black'
-	},
-
 	render: function(){
+		var buttonStyle = {
+			flexDirection: 'row',
+			justifyContent: 'center',
+			height: this.props.Height,
+			width: this.props.Width,
+			padding: this.props.Padding,
+			backgroundColor: '#e67e22',
+			alignItems: 'center',
+			fontSize: this.props.FontSize,
+			fontFamily: 'Roboto',
+			color: 'white',
+			textAlign: 'center',
+			fontWeight: 'bold',
+			textShadowColor: 'black'
+		};
+
 		return(
-		<TouchableOpacity onPress={this.props.OnPress}>
-			<Text style={this.buttonStyle}>{this.props.children}</Text>
-		</TouchableOpacity>
+			<TouchableOpacity onPress={this.props.OnPress}>
+				<Text style={[buttonStyle, this.props.Style]}>{this.props.children}</Text>
+			</TouchableOpacity>
 		);
 	}
 });

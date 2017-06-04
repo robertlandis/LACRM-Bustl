@@ -155,8 +155,8 @@ const styles = StyleSheet.create({
 		fontSize: 52,
 		fontFamily: 'Roboto Slab',
 		fontWeight: '600',
-		textShadowColor: 'black',
-		textShadowRadius: 50
+		shadowColor: 'black',
+		shadowRadius: 50
 	},
 
 	logo: {
