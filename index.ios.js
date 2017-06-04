@@ -6,12 +6,12 @@ import {
 	View,
 } from 'react-native';
 
+import _ from 'lodash';
+
 import Page1 from './views/page_1';
 import ChooseRoutePage from './views/choose_route_page';
 import ChooseEndingStopPage from './views/choose_ending_stop_page';
 import Page3 from './views/page_3';
-
-import CallApi from './js/api';
 
 const bustl = React.createClass({
 	childContextTypes: {
@@ -26,26 +26,21 @@ const bustl = React.createClass({
 
 	getInitialState: function(){
 		return {
-			CurrentPage: 0,
+			CurrentPage: 2,
 			CurrentPageProps: {}
 		};
 	},
 
-	componentDidMount: function(){
-		CallApi("GetAllStopsForTrip", { TripId: "2250771" }, function(Result){
-			console.log("Result", Result);
-		});
-	},
-
-	ChangePage: function(PageToLoad, Props = {}){
+	ChangePage: function(PageToLoad, PageProps = {}){	
 		this.setState({
 			CurrentPage: PageToLoad,
-			CurrentPageProps: Props,
+			CurrentPageProps: PageProps,
 		});
 	},
 
 	render: function() {
 		var ComponentToLoad = null;
+		var key = null
 
 		switch(this.state.CurrentPage){
 			case 0:
@@ -68,7 +63,7 @@ const bustl = React.createClass({
 		}
 
 		return (
-			<View style={styles.container}>
+			<View key={key} style={styles.container}>
 				{ComponentToLoad}
 			</View>
 		);

@@ -20,7 +20,7 @@ const BusStopRow = React.createClass({
 		return(
 			<TouchableOpacity onPress={this.HandlePress}>
 				<View onPress={this.props.onPress} style={styles.container}>
-					<Text style={styles.row}>{this.props.data.Name}</Text>
+					<Text style={styles.row}>{this.props.data.stop_name}</Text>
 					<Text style={styles.distance_info}>{this.props.data.Distance.toString().substr(0, 3)} miles</Text>
 				</View>
 				<HorizontalRule />

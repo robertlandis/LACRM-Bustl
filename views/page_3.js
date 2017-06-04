@@ -13,7 +13,8 @@ import _ from 'lodash';
 import ProgressBar from './progress_bar';
 import BusStopRow from './bus_stop_row';
 import HorizontalRule from './horizontal_rule';
-
+import GetLocation from '../js/get_location';
+import CallApi from '../js/api';
 
 const Page3 = React.createClass({
 
@@ -21,70 +22,34 @@ const Page3 = React.createClass({
 		ChangePage: React.PropTypes.func
 	},
 
-	BusStops: [
-		{
-			"Name": "18TH ST @ PINE NB",
-			"Distance": 0.3,
-			"stop_id": 1
-		},
+	getInitialState: function(){
+		return {
+			stops: null
+		};
+	},
 
-		{
-			"Name": "FOREST @ 57TH ST WB",
-			"Distance": 0.4,
-			"stop_id": 2
-		},
-		{
-			"Name": "18TH ST @ PINE NB",
-			"Distance": 0.3,
-			"stop_id": 3
-		},
+	componentWillMount: function(){
+		var SetPage3State = _.bind(this.setState, this);
 
-		{
-			"Name": "FOREST @ 57TH ST WB",
-			"Distance": 0.4,
-			"stop_id": 5
-		},
-		{
-			"Name": "18TH ST @ PINE NB",
-			"Distance": 0.3,
-			"stop_id": 4
-		},
-
-		{
-			"Name": "FOREST @ 57TH ST WB",
-			"Distance": 0.4,
-			"stop_id": 6
-		},
-		{
-			"Name": "18TH ST @ PINE NB",
-			"Distance": 0.3,
-			"stop_id": 7
-		},
-
-		{
-			"Name": "FOREST @ 57TH ST WB",
-			"Distance": 0.4,
-			"stop_id": 8
-		},
-		{
-			"Name": "18TH ST @ PINE NB",
-			"Distance": 0.3,
-			"stop_id": 9
-		},
-
-		{
-			"Name": "FOREST @ 57TH ST WB",
-			"Distance": 0.4,
-			"stop_id": 10
-		}
-	],
+		GetLocation(function(position){
+			CallApi("GetNearbyStops", {
+				CurrentLat: position.coords.latitude.toString(),
+				CurrentLon: position.coords.longitude.toString()
+			}, function(Result){
+				SetPage3State({stops: Result});
+			});
+		});	
+	},
 
 	HandlePress: function(StopId){
-		console.log("onPress", StopId);
 		this.context.ChangePage(3, {StopId: StopId});
 	},
 
 	render: function(){
+
+		if(this.state.stops == null){
+			return (<View></View>);
+		}
 
 		return(
 			<View>
@@ -96,7 +61,7 @@ const Page3 = React.createClass({
 					<Text style={styles.subheader_text}>Nearby stops</Text>
 				</View>
 				<FlatList
-					data={this.BusStops}
+					data={this.state.stops}
 					renderItem={({item}) => <BusStopRow OnPress={this.HandlePress} data={item} /> }
 					style={{height:415}}
 					keyExtractor={(item, index) => item.stop_id}
