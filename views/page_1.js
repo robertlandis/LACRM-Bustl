@@ -114,7 +114,7 @@ const Page1 = React.createClass({
 				<Text style={[styles.infoText, {
 					marginBottom: 5
 				}]}>Have your route and ready to get on the road?</Text>
-				<OrangeButton ButtonText={'Start Ride'} OnPress={()=> {alert("Press"); }}/>
+				<OrangeButton OnPress={_.partial(this.props.onChangePage, 1)}>Start Ride</OrangeButton>
 			</View>
 		</View>
 		);

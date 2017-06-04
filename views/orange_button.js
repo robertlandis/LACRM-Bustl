@@ -10,23 +10,15 @@ const GrayButton = React.createClass({
 
 	getDefaultProps: function(){
 		return {
-			ButtonText: "OK",
-			OnPress: function(){}
+			OnPress: function(){},
+			height: 110,
+			width: 325,
+			padding: 27,
+			fontSize: 48
 		};
 	},
 
-	render: function(){
-		return(
-		<TouchableOpacity onPress={this.props.OnPress}>
-			<Text style={styles.button}>{this.props.ButtonText}</Text>
-		</TouchableOpacity>
-		);
-	}
-});
-
-const styles = StyleSheet.create({
-
-	button: {
+	buttonStyle: {
 		flexDirection: 'row',
 		justifyContent: 'center',
 		height: 110,
@@ -40,6 +32,14 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		fontWeight: 'bold',
 		textShadowColor: 'black'
+	},
+
+	render: function(){
+		return(
+		<TouchableOpacity onPress={this.props.OnPress}>
+			<Text style={this.buttonStyle}>{this.props.children}</Text>
+		</TouchableOpacity>
+		);
 	}
 });
 
