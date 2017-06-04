@@ -7,18 +7,32 @@ import {
 } from 'react-native';
 
 import Page1 from './views/page_1';
+import ChooseRoutePage from './views/choose_route_page';
+import ChooseEndingStopPage from './views/choose_ending_stop_page';
 import Page3 from './views/page_3';
 
 const bustl = React.createClass({
+	childContextTypes: {
+		ChangePage: React.PropTypes.func,
+	},
+
+	getChildContext: function(){
+		return {
+			ChangePage: this.ChangePage
+		}
+	},
+
 	getInitialState: function(){
 		return {
-			CurrentPage: 0
+			CurrentPage: 0,
+			CurrentPageProps: {}
 		};
 	},
 
-	ChangePage: function(PageToLoad){
+	ChangePage: function(PageToLoad, Props = {}){
 		this.setState({
-			CurrentPage: PageToLoad
+			CurrentPage: PageToLoad,
+			CurrentPageProps: Props,
 		});
 	},
 
@@ -27,10 +41,16 @@ const bustl = React.createClass({
 
 		switch(this.state.CurrentPage){
 			case 0:
-				ComponentToLoad = <Page1 onChangePage={this.ChangePage} />;
+				ComponentToLoad = <Page1 />;
+				break;
+			case 1:
+				ComponentToLoad = <ChooseRoutePage />;
 				break;
 			case 2:
-				ComponentToLoad = <Page3 onChangePage={this.ChangePage} />;
+				ComponentToLoad = <Page3 />;
+				break;
+			case 3:
+				ComponentToLoad = <ChooseEndingStopPage  />
 				break;
 			default:
 				break;
