@@ -58,7 +58,10 @@ const bustl = React.createClass({
 				ComponentToLoad = <Page3 />;
 				break;
 			case 3:
-				ComponentToLoad = <ChooseEndingStopPage  />
+				ComponentToLoad = <ChooseEndingStopPage  />;
+				break;
+			case 4:
+				ComponentToLoad = <OnTheBusPage />;
 				break;
 			default:
 				break;
@@ -74,7 +77,8 @@ const bustl = React.createClass({
 
 const styles = StyleSheet.create({
 	container: {
-		//justifyContent: 'center',
+		justifyContent: 'center',
+		backgroundColor: '#F5FCFF'
 	}
 });
 

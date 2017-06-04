@@ -27,13 +27,13 @@ const UpcomingStopRow = React.createClass({
 					<Text style={styles.BulletPoint}>•</Text>
 					<View style={{flexDirection:'column', justifyContent:'space-around'}}>
 						<Text style={{fontSize:16}}>Starting point:</Text>
-						<Text style={[styles.Headsign, {top:-5}]}>{StopInfo.StopName}</Text>
+						<Text style={[styles.Headsign, {top:-3}]}>{StopInfo.StopName}</Text>
 					</View>
 				</View>
 			);
 		} else {
 			return(
-				<TouchableOpacity style={styles.UpcomingStopRow} onPress={_.partial(this.context.ChangePage, 0)}>
+				<TouchableOpacity style={styles.UpcomingStopRow} onPress={_.partial(this.context.ChangePage, 4)}>
 					<View style={{flexDirection:'row', justifyContent:'flex-start'}}>
 						<Text style={styles.BulletPoint}>•</Text>
 						<View style={{flexDirection:'column', justifyContent:'space-around'}}>
@@ -54,7 +54,7 @@ const UpcomingStopRow = React.createClass({
 const styles = StyleSheet.create({
 
 	BulletPoint: {
-		fontSize:36,
+		fontSize:42,
 		fontWeight:'bold',
 		paddingRight:15,
 		color:"#aaaaaa"
