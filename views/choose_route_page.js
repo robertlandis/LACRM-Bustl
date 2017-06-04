@@ -45,7 +45,7 @@ const ChooseRoutePage = React.createClass({
 		} else {
 
 			return(
-				<View>
+				<View style={{justifyContent:'flex-end'}}>
 					<ProgressBar style={{height:100}} CurrentStep={1} />
 					<View style={styles.GreenBox}>
 						<Text style={{color:'white', fontSize:24, fontWeight:'bold'}}>What route are you taking?</Text>
