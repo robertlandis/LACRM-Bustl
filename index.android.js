@@ -27,13 +27,13 @@ const bustl = React.createClass({
 	getChildContext: function(){
 		return {
 			ChangePage: this.ChangePage
-		}
+		};
 	},
 
-	ChangePage: function(PageToLoad, Props = {}){
+	ChangePage: function(PageToLoad, PageProps = {}){	
 		this.setState({
 			CurrentPage: PageToLoad,
-			CurrentPageProps: Props,
+			CurrentPageProps: PageProps,
 		});
 	},
 
@@ -48,10 +48,10 @@ const bustl = React.createClass({
 				ComponentToLoad = <ChooseRoutePage />;
 				break;
 			case 2:
-				ComponentToLoad = <Page3 />
+				ComponentToLoad = <Page3 TripId={this.state.CurrentPageProps.TripId} />;
 				break;
 			case 3:
-				ComponentToLoad = <ChooseEndingStopPage />
+				ComponentToLoad = <ChooseEndingStopPage TripId={this.state.CurrentPageProps.TripId} Stop={this.state.CurrentPageProps.Stop} />;
 				break;
 			case 4:
 				ComponentToLoad = <OnTheBusPage />;
@@ -71,7 +71,6 @@ const bustl = React.createClass({
 const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'center',
-		backgroundColor: '#F5FCFF'
 	}
 });
 

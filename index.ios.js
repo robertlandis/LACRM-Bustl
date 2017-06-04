@@ -6,12 +6,13 @@ import {
 	View,
 } from 'react-native';
 
+import _ from 'lodash';
+
 import Page1 from './views/page_1';
 import ChooseRoutePage from './views/choose_route_page';
 import ChooseEndingStopPage from './views/choose_ending_stop_page';
 import Page3 from './views/page_3';
-
-import CallApi from './js/api';
+import OnTheBusPage from './views/on_the_bus_page';
 
 const bustl = React.createClass({
 	childContextTypes: {
@@ -31,21 +32,16 @@ const bustl = React.createClass({
 		};
 	},
 
-	componentDidMount: function(){
-		CallApi("GetAllStopsForTrip", { TripId: "2250771" }, function(Result){
-			console.log("Result", Result);
-		});
-	},
-
-	ChangePage: function(PageToLoad, Props = {}){
+	ChangePage: function(PageToLoad, PageProps = {}){	
 		this.setState({
 			CurrentPage: PageToLoad,
-			CurrentPageProps: Props,
+			CurrentPageProps: PageProps,
 		});
 	},
 
 	render: function() {
 		var ComponentToLoad = null;
+		var key = null;
 
 		switch(this.state.CurrentPage){
 			case 0:
@@ -55,10 +51,10 @@ const bustl = React.createClass({
 				ComponentToLoad = <ChooseRoutePage />;
 				break;
 			case 2:
-				ComponentToLoad = <Page3 />;
+				ComponentToLoad = <Page3 TripId={this.state.CurrentPageProps.TripId} />;
 				break;
 			case 3:
-				ComponentToLoad = <ChooseEndingStopPage  />;
+				ComponentToLoad = <ChooseEndingStopPage TripId={this.state.CurrentPageProps.TripId} Stop={this.state.CurrentPageProps.Stop} />;
 				break;
 			case 4:
 				ComponentToLoad = <OnTheBusPage />;
@@ -68,7 +64,7 @@ const bustl = React.createClass({
 		}
 
 		return (
-			<View style={styles.container}>
+			<View key={key} style={styles.container}>
 				{ComponentToLoad}
 			</View>
 		);
@@ -78,7 +74,6 @@ const bustl = React.createClass({
 const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'center',
-		backgroundColor: '#F5FCFF'
 	}
 });
 
