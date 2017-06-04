@@ -38,13 +38,33 @@ const ChooseEndingStopPage = React.createClass({
 			return (<View></View>);
 		} else {
 
+			var AllStops = this.state.AllStops;
+			var InitialStop = this.props.Stop;
+
+			StartingStop = _.find(AllStops, function(Stop){
+				return Stop['stop_id'] == InitialStop['stop_id'];
+			});
+
+			var SortedStops = _.sortBy(AllStops, function(Stop){
+				return Stop['stop_sequence'];
+			});
+
+			var UpcomingStops = [];
+
+			_.each(SortedStops, function(ThisStop){
+				if(parseInt(ThisStop['stop_sequence']) >= parseInt(StartingStop['stop_sequence'])){
+					UpcomingStops.push(ThisStop);
+				}
+			});
+
+
 			return(
 				<View style={{flexDirection:'column', justifyContent:'flex-end'}}>
 					<ProgressBar style={{height:100}} CurrentStep={3} />
 					<View style={styles.GreenBox}>
 						<Text style={{color:'white', fontSize:24, fontWeight:'bold'}}>Where are you getting off?</Text>
 					</View>
-					<StopsOnThisRoute UpcomingStops={null /*UpcomingStops*/}/>
+					<StopsOnThisRoute UpcomingStops={UpcomingStops}/>
 				</View>
 			);
 		}
