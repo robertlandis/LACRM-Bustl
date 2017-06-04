@@ -14,6 +14,7 @@ import {
 import Page1 from './views/page_1';
 import ChooseRoutePage from './views/choose_route_page';
 import ChooseEndingStopPage from './views/choose_ending_stop_page'
+import Page3 from './views/page_3';
 
 const bustl = React.createClass({
 	getInitialState: function(){
@@ -50,7 +51,7 @@ const bustl = React.createClass({
 				ComponentToLoad = <ChooseRoutePage />;
 				break;
 			case 2:
-				ComponentToLoad = <Page1 onChangePage={this.ChangePage} />
+				ComponentToLoad = <Page3 />
 				break;
 			case 3:
 				ComponentToLoad = <ChooseEndingStopPage />
