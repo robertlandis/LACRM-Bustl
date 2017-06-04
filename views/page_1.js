@@ -11,6 +11,7 @@ import {
 import _ from 'lodash';
 
 import ProgressBar from './progress_bar';
+import ChooseRoutePage from './choose_route_page'
 
 var keys = [];
 var watchId = null;
@@ -79,34 +80,50 @@ const Page1 = React.createClass({
 		});
 	},
 
+	getInitialState: function(){
+		return {
+			CurrentPage:"ChooseRoute"
+		};
+	},	
+
 	render: function(){
-		return(
-		<View>
 
-			<ProgressBar CurrentStep={3} />
-			<View style={styles.header}>
-				<View style={styles.row}>
-					<View><Image style={styles.logo} source={require("../i/bustl-180.png")} /></View>
-				</View>
-
-				<View style={styles.row}>
-					<Text style={styles.title}>bustl</Text>
-				</View>
-
-				<Text style={styles.header_text}>
-					This is some text about how the app works. Sell the value prop and prime the user
-				</Text>
-			</View>
-			<View style={styles.container}>
+		if(this.state.CurrentPage == "ChooseRoute"){
+			return(
 				<View>
-					<Button title="Click me to start" onPress={_.bind(this.StartTrackingLocation, this)}/>
-					<Button title="Click me to stop" onPress={_.bind(this.StopTrackingLocation, this)}/>
+					<ChooseRoutePage />
 				</View>
-				
-			</View>
-			
-		</View>
-		);
+			);
+		} else {
+
+			return(
+				<View>
+
+					<ProgressBar CurrentStep={3} />
+					<View style={styles.header}>
+						<View style={styles.row}>
+							<View><Image style={styles.logo} source={require("../i/bustl-180.png")} /></View>
+						</View>
+
+						<View style={styles.row}>
+							<Text style={styles.title}>bustl</Text>
+						</View>
+
+						<Text style={styles.header_text}>
+							This is some text about how the app works. Sell the value prop and prime the user
+						</Text>
+					</View>
+					<View style={styles.container}>
+						<View>
+							<Button title="Click me to start" onPress={_.bind(this.StartTrackingLocation, this)}/>
+							<Button title="Click me to stop" onPress={_.bind(this.StopTrackingLocation, this)}/>
+						</View>
+						
+					</View>
+					
+				</View>
+			)
+		}
 	}
 });
 
