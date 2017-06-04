@@ -12,9 +12,6 @@ import _ from 'lodash';
 import GrayButton from './gray_button';
 import OrangeButton from './orange_button';
 
-import ProgressBar from './progress_bar';
-import ChooseRoutePage from './choose_route_page'
-
 var keys = [];
 var watchId = null;
 var TimeoutId = null;
