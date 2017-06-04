@@ -6,7 +6,8 @@ import {
 	View,
 	Button,
 	AsyncStorage,
-	Image
+	Image,
+	ScrollView
 } from 'react-native';
 import _ from 'lodash';
 
@@ -45,9 +46,9 @@ const NearbyBusLines = React.createClass({
 		});
 
 		return(
-			<View>
+			<ScrollView style={{flexDirection:'column'}}>
 				{NearestLineRows}
-			</View>
+			</ScrollView>
 		);
 	}
 

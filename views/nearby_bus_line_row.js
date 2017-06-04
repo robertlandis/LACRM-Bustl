@@ -20,8 +20,9 @@ const NearbyBusLineRow = React.createClass({
 		return(
 			<View style={styles.NearbyBusLineRow}>
 				<Text style={styles.RouteNumber}>{LineInfo.RouteNumber}</Text>
-				<View>
-					<Text>{LineInfo.HeadSign}</Text>
+				<View style={{padding:3, paddingLeft:5}}>
+					<Text style={styles.RouteName}>{LineInfo.RouteName}</Text>
+					<Text style={styles.Headsign}>{LineInfo.RouteHeadsign}</Text>
 				</View>
 			</View>
 		);
@@ -32,19 +33,32 @@ const NearbyBusLineRow = React.createClass({
 const styles = StyleSheet.create({
 
 	NearbyBusLineRow: {
-		padding:10,
 		flexDirection:'row',
-		flex:1,
 		justifyContent:'flex-start',
+		padding:5,
+		paddingLeft:15,
 		borderBottomWidth:1,
 		borderBottomColor:'#cccccc',
+		width:'100%',
+		height:60,
 	},
 
 	RouteNumber: {
-		fontWeight:'bold',
-		fontSize:20,
+		fontSize:36,
 		width:50,
-		height:60
+		height:60,
+		color:'black'
+	},
+
+	RouteName: {
+		fontStyle:'italic',
+		fontSize:12,
+		padding:0,
+	},
+
+	Headsign: {
+		fontSize: 20,
+		color:'black'
 	}
 
 });
