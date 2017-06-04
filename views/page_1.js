@@ -6,7 +6,9 @@ import {
 	View,
 	Button,
 	AsyncStorage,
-	Image
+	Image,
+	Linking,
+	Platform
 } from 'react-native';
 
 import _ from 'lodash';
@@ -17,6 +19,20 @@ const Page1 = React.createClass({
 	
 	contextTypes: {
 		ChangePage: React.PropTypes.func
+	},
+
+	onMapsPress: function(){
+		var Url = 'geo:';
+
+		if(Platform.OS === 'ios'){
+			Url = 'maps:';
+		}
+
+		if(this.props.Location){
+			Url += this.props.Location.latitude+','+this.props.Location.longitude;
+		}
+
+		Linking.openURL(Url);
 	},
 
 	render: function(){
@@ -46,7 +62,7 @@ const Page1 = React.createClass({
 				marginTop: 37
 			}]}>
 				<Text style={styles.infoText}>Need to look up your bus route?</Text>
-				<GrayButton ButtonText={'Plan route with Google Maps'} OnPress={()=> {alert("Press"); }}/>
+				<GrayButton ButtonText={'Plan route with '+(Platform.OS === 'ios' ? 'Apple' : 'Google')+' Maps'} OnPress={this.onMapsPress} />
 			</View>
 
 			<View style={[styles.container, {
