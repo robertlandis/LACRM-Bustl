@@ -1,10 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
+
 import {
 	AppRegistry,
 	StyleSheet,
@@ -13,29 +8,42 @@ import {
 
 import Page1 from './views/page_1';
 
-export default class bustl2 extends Component {
+const bustl = React.createClass({
+	getInitialState: function(){
+		return {
+			CurrentPage: 0
+		};
+	},
 
-	render() {
-		/*return (
-            <View style={styles.container}>
-              <Button title="Click me to start" onPress={_.bind(this.StartTrackingLocation, this)}/>
-              <Button title="Click me to stop" onPress={_.bind(this.StopTrackingLocation, this)}/>
-            </View>
-		);*/
+	ChangePage: function(PageToLoad){
+		this.setState({
+			CurrentPage: PageToLoad
+		});
+	},
 
-    return (
-      <View style={styles.container}>
-        <Page1 />
-      </View>
-    );
-	}
-}
+	render: function() {
+		var ComponentToLoad = null;
 
-const styles = StyleSheet.create({
-	container: {
-		justifyContent: 'center',
-		backgroundColor: '#F5FCFF'
+		switch(this.state.CurrentPage){
+			case 0:
+				ComponentToLoad = <Page1 onChangePage={this.ChangePage} />;
+				break;
+			default:
+				break;
+		}
+
+		return (
+			<View style={styles.container}>
+				{ComponentToLoad}
+			</View>
+		);
 	}
 });
 
-AppRegistry.registerComponent('bustl2', () => bustl2);
+const styles = StyleSheet.create({
+	container: {
+		//justifyContent: 'center',
+	}
+});
+
+AppRegistry.registerComponent('bustl2', () => bustl);

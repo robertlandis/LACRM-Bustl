@@ -9,36 +9,41 @@ import {
 	Image
 } from 'react-native';
 import _ from 'lodash';
+import GrayButton from './gray_button';
+import OrangeButton from './orange_button';
+
+import ProgressBar from './progress_bar';
+import ChooseRoutePage from './choose_route_page'
 
 var keys = [];
 var watchId = null;
 var TimeoutId = null;
 
-function GetLocation_Raw(){
-		navigator.geolocation.getCurrentPosition(
-			(position) => {
-				console.log("GetLocation_Raw", position);
-				try {
-					AsyncStorage.setItem(position.timestamp.toString(), JSON.stringify(position));
-					keys.push(position.timestamp.toString())
-				} catch (error){
-					console.log("There was an error", error);
-				}
-			},
-			(error) => {
-				alert(JSON.stringify(error));
-			},
-			{enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-		);
+/*function GetLocation_Raw(){
+	navigator.geolocation.getCurrentPosition(
+		(position) => {
+			console.log("GetLocation_Raw", position);
+			try {
+				AsyncStorage.setItem(position.timestamp.toString(), JSON.stringify(position));
+				keys.push(position.timestamp.toString())
+			} catch (error){
+				console.log("There was an error", error);
+			}
+		},
+		(error) => {
+			alert(JSON.stringify(error));
+		},
+		{enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+	);
 }
 
 function GetLocation(){
-		GetLocation_Raw();
-		TimeoutId = setTimeout(GetLocation, 1000);
+	GetLocation_Raw();
+	TimeoutId = setTimeout(GetLocation, 1000);
 }
-
+*/
 const Page1 = React.createClass({
-	StartTrackingLocation:function(){
+	/*StartTrackingLocation:function(){
 		watchId = navigator.geolocation.watchPosition((position) => {
 			console.log("StartTrackingLocation", position);
 			try {
@@ -75,14 +80,14 @@ const Page1 = React.createClass({
 			http.send(params);
 			keys = [];
 		});
-	},
+	},*/
 
 	render: function(){
 		return(
 		<View>
 			<View style={styles.header}>
 				<View style={styles.row}>
-					<View><Image style={styles.logo} source={require("../i/bustl-180.png")} /></View>
+					<Image style={styles.logo} source={require("../i/bustl-180.png")} />
 				</View>
 
 				<View style={styles.row}>
@@ -93,35 +98,53 @@ const Page1 = React.createClass({
 					This is some text about how the app works. Sell the value prop and prime the user
 				</Text>
 			</View>
+
 			<View style={styles.container}>
-				<View>
-					<Button title="Click me to start" onPress={_.bind(this.StartTrackingLocation, this)}/>
-					<Button title="Click me to stop" onPress={_.bind(this.StopTrackingLocation, this)}/>
-				</View>
-				
+				<Text style={styles.infoText}>New to the St. Louis bus system?</Text>
+				<GrayButton ButtonText={'View the Stl bus tutorial'} OnPress={()=> {alert("Press"); }}/>
 			</View>
-			
+
+			<View style={[styles.container, {
+				marginTop: 37
+			}]}>
+				<Text style={styles.infoText}>Need to look up your bus route?</Text>
+				<GrayButton ButtonText={'Plan route with Google Maps'} OnPress={()=> {alert("Press"); }}/>
+			</View>
+
+			<View style={[styles.container, {
+				marginTop: 37
+			}]}>
+				<Text style={[styles.infoText, {
+					marginBottom: 5
+				}]}>Have your route and ready to get on the road?</Text>
+				<OrangeButton OnPress={_.partial(this.props.onChangePage, 1)}>Start Ride</OrangeButton>
+			</View>
 		</View>
 		);
 	}
 });
 
-/*<Text>New to the St. Louis bus system?</Text>
-				<Button title='View the Stl bus tutorial' onPress={()=> {console.log("Load the tutorial"); alert("Tutorial is not yet finished"); }} />*/
+/*
+<View>
+	<Button title="Click me to start" onPress={_.bind(this.StartTrackingLocation, this)}/>
+	<Button title="Click me to stop" onPress={_.bind(this.StopTrackingLocation, this)}/>
+</View>
+*/
 
 const styles = StyleSheet.create({
 
 	container: {
 		justifyContent: 'center',
-		backgroundColor: '#F5FCFF'
+		//backgroundColor: '#F5FCFF',
+		alignItems: 'center',
+		marginTop: 43
 	},
 
 	header: {
 		flexDirection: 'column',
 		alignItems: 'center',
-		//justifyContent: 'center',
-		height: 325,
-		padding: 25,
+		height: 286,
+		padding: 20,
 		backgroundColor: '#27ae60'
 	},
 
@@ -132,26 +155,29 @@ const styles = StyleSheet.create({
 
 	title: {
 		color: '#ecf0f1',
-		fontSize: 60,
-		fontFamily: 'Roboto',
-		fontWeight: '700',
-		marginBottom: 5
+		fontSize: 52,
+		fontFamily: 'Roboto Slab',
+		fontWeight: '600',
+		textShadowColor: 'black',
+		textShadowRadius: 50
 	},
 
 	logo: {
 		alignItems: 'center',
-		height: 120,
-		width: 120
+		height: 100,
+		width: 100
 	},
 
 	header_text: {
-		fontSize: 24,
+		fontSize: 23,
 		fontFamily: 'Roboto',
 		color: '#ecf0f1',
 		textAlign: 'center',
-		marginBottom: 10,
-		textShadowColor: 'black',
-		fontWeight: '400'
+	},
+
+	infoText: {
+		color: '#606060',
+		marginBottom: 3
 	}
 });
 
