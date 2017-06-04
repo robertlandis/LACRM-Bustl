@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 
+import ProgressBar from './progress_bar';
+
 var keys = [];
 var watchId = null;
 var TimeoutId = null;
@@ -80,6 +82,8 @@ const Page1 = React.createClass({
 	render: function(){
 		return(
 		<View>
+
+			<ProgressBar CurrentStep={2} />
 			<View style={styles.header}>
 				<View style={styles.row}>
 					<View><Image style={styles.logo} source={require("../i/bustl-180.png")} /></View>
