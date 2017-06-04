@@ -83,7 +83,7 @@ const Page1 = React.createClass({
 		return(
 		<View>
 
-			<ProgressBar CurrentStep={2} />
+			<ProgressBar CurrentStep={3} />
 			<View style={styles.header}>
 				<View style={styles.row}>
 					<View><Image style={styles.logo} source={require("../i/bustl-180.png")} /></View>

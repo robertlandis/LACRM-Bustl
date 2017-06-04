@@ -20,8 +20,8 @@ const ProgressBarItem = React.createClass({
 	render: function(){
 
 		return(
-			<View style={[styles.ProgressBarItem, styles.NotCurrentStep, this.context.CurrentStep == this.props.ThisStep && styles.CurrentStep]}>
-				<Text style={[styles.NotCurrentStepText, this.context.CurrentStep == this.props.ThisStep && styles.CurrentStepText]}>Step {this.props.Step}</Text>
+			<View style={[styles.ProgressBarItem, this.context.CurrentStep == this.props.Step && styles.HighlighedProgressBarItem]}>
+				<Text style={[styles.StepText, this.context.CurrentStep == this.props.Step && styles.CurrentStepText]}>Step {this.props.Step}</Text>
 			</View>
 		);
 	}
@@ -32,30 +32,30 @@ const styles = StyleSheet.create({
 	
 	ProgressBarItem: {
 		width:'30%',
-		height:22,
+		height:26,
+		backgroundColor:"#dddddd",
 	},
 
-	CurrentStep: {
-		backgroundColor:'#27AE60',
+	HighlighedProgressBarItem: {
+		backgroundColor:'#27ae60',
 	},
 
 	NotCurrentStep: {
 		backgroundColor:'#DDDDDD',
 	},
 
-	CurrentStepText: {
-		textAlign:'center',
-		color:"#FFFFFF",
-		padding:3,
-		lineHeight:14
-	},
-
-	NotCurrentStepText: {
+	StepText: {
 		textAlign:'center',
 		color:"#AAAAAA",
 		padding:3,
 		lineHeight:14
-	}
+	},
+
+	CurrentStepText: {
+		color:"#ffffff"
+	},
+
+	
 
 
 });
