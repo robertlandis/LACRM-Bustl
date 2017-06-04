@@ -14,6 +14,8 @@ import ChooseEndingStopPage from './views/choose_ending_stop_page';
 import Page3 from './views/page_3';
 import OnTheBusPage from './views/on_the_bus_page';
 
+import GetLocation from './js/get_location';
+
 const bustl = React.createClass({
 	childContextTypes: {
 		ChangePage: React.PropTypes.func,
@@ -28,8 +30,17 @@ const bustl = React.createClass({
 	getInitialState: function(){
 		return {
 			CurrentPage: 0,
-			CurrentPageProps: {}
+			CurrentPageProps: {},
+			position: null
 		};
+	},
+
+	componentWillMount: function(){
+		GetLocation((position)=>{
+			this.setState({
+				position: position
+			});
+		});
 	},
 
 	ChangePage: function(PageToLoad, PageProps = {}){	
@@ -45,7 +56,7 @@ const bustl = React.createClass({
 
 		switch(this.state.CurrentPage){
 			case 0:
-				ComponentToLoad = <Page1 />;
+				ComponentToLoad = <Page1 Location={this.state.position} />;
 				break;
 			case 1:
 				ComponentToLoad = <ChooseRoutePage />;

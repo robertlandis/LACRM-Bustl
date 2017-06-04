@@ -28,6 +28,10 @@ const Page1 = React.createClass({
 			Url = 'maps:';
 		}
 
+		if(this.props.Location){
+			Url += this.props.Location.latitude+','+this.props.Location.longitude;
+		}
+
 		Linking.openURL(Url);
 	},
 
