@@ -41,7 +41,7 @@ const ChooseEndingStopPage = React.createClass({
 			var AllStops = this.state.AllStops;
 			var InitialStop = this.props.Stop;
 
-			StartingStop = _.find(AllStops, function(Stop){
+			var StartingStop = _.find(AllStops, function(Stop){
 				return Stop['stop_id'] == InitialStop['stop_id'];
 			});
 
@@ -64,7 +64,7 @@ const ChooseEndingStopPage = React.createClass({
 					<View style={styles.GreenBox}>
 						<Text style={{color:'white', fontSize:24, fontWeight:'bold'}}>Where are you getting off?</Text>
 					</View>
-					<StopsOnThisRoute UpcomingStops={UpcomingStops}/>
+					<StopsOnThisRoute StartingStop={StartingStop} UpcomingStops={UpcomingStops}/>
 				</View>
 			);
 		}

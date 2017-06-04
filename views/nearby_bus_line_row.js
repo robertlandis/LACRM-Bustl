@@ -21,7 +21,7 @@ const NearbyBusLineRow = React.createClass({
 		var LineInfo = this.props.LineInfo
 
 		return(
-			<TouchableOpacity style={styles.NearbyBusLineRow} onPress={_.partial(this.context.ChangePage, 2, {TripId:LineInfo.trip_id})}>
+			<TouchableOpacity style={styles.NearbyBusLineRow} onPress={_.partial(this.context.ChangePage, 2, {TripId:LineInfo.trip_id, LineInfo: LineInfo})}>
 				<Text style={styles.RouteNumber}>{LineInfo.route_short_name}</Text>
 				<View style={{padding:3, paddingLeft:5}}>
 					<Text style={styles.RouteName}>{LineInfo.route_long_name}</Text>

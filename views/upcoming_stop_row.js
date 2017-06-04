@@ -17,8 +17,7 @@ const UpcomingStopRow = React.createClass({
 		ChangePage: React.PropTypes.func
 	},
 
-	render: function(){		
-
+	render: function(){
 		var StopInfo = this.props.StopInfo;
 
 		var StartingStop = new Date("October 13, 1975 "+this.props.FirstStop.arrival_time);
@@ -38,7 +37,7 @@ const UpcomingStopRow = React.createClass({
 			);
 		} else {
 			return(
-				<TouchableOpacity style={styles.UpcomingStopRow} onPress={_.partial(this.context.ChangePage, 4)}>
+				<TouchableOpacity style={styles.UpcomingStopRow} onPress={_.partial(this.context.ChangePage, 4, this.props)}>
 					<View style={{flexDirection:'row', justifyContent:'flex-start'}}>
 						<Text style={styles.BulletPoint}>•</Text>
 						<View style={{flexDirection:'column', justifyContent:'space-around'}}>

@@ -10,8 +10,9 @@ import _ from 'lodash';
 
 import Page1 from './views/page_1';
 import ChooseRoutePage from './views/choose_route_page';
-import ChooseEndingStopPage from './views/choose_ending_stop_page';
 import Page3 from './views/page_3';
+import ChooseEndingStopPage from './views/choose_ending_stop_page';
+import Page5 from './views/page_5';
 import OnTheBusPage from './views/on_the_bus_page';
 
 import GetLocation from './js/get_location';
@@ -50,6 +51,8 @@ const bustl = React.createClass({
 		});
 	},
 
+	Route: null,
+
 	render: function() {
 		var ComponentToLoad = null;
 		var key = null;
@@ -62,13 +65,17 @@ const bustl = React.createClass({
 				ComponentToLoad = <ChooseRoutePage />;
 				break;
 			case 2:
-				alert(this.state.CurrentPageProps.TripId);
+				this.Route = this.state.CurrentPageProps.LineInfo;
 				ComponentToLoad = <Page3 TripId={this.state.CurrentPageProps.TripId} />;
 				break;
 			case 3:
 				ComponentToLoad = <ChooseEndingStopPage TripId={this.state.CurrentPageProps.TripId} Stop={this.state.CurrentPageProps.Stop} />;
 				break;
 			case 4:
+				console.log("CurrentPageProps", this.state.CurrentPageProps);
+				ComponentToLoad = <Page5 CurrentProps={this.state.CurrentPageProps} Route={this.Route} />
+				break;
+			case 5:
 				ComponentToLoad = <OnTheBusPage />;
 				break;
 			default:

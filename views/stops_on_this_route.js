@@ -26,7 +26,7 @@ const StopsOnThisRoute = React.createClass({
 			<FlatList 
 				data={this.props.UpcomingStops}
 				keyExtractor={this._keyExtractor}
-				renderItem={({item, index}) => <UpcomingStopRow FirstStop={this.props.UpcomingStops[0]} StopIndex={index} StopInfo={item}/>}
+				renderItem={({item, index}) => <UpcomingStopRow FirstStop={this.props.StartingStop} StopIndex={index} StopInfo={item}/>}
 			/>
 		);
 	}
