@@ -11,6 +11,7 @@ import {
 import _ from 'lodash';
 
 import ProgressBar from './progress_bar';
+import NearbyBusLines from './nearby_bus_lines';
 
 const ChooseRoutePage = React.createClass({
 	
@@ -24,6 +25,7 @@ const ChooseRoutePage = React.createClass({
 					<Text style={{color:'white', fontSize:24, fontWeight:'bold'}}>What route are you taking?</Text>
 					<Text style={{color:'white', fontSize:14}}>If you're not sure, you should plan your route before starting this ride.</Text>
 				</View>
+				<NearbyBusLines />
 			</View>
 		);
 	}
