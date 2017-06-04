@@ -6,25 +6,29 @@ import {
 	View,
 	Button,
 	AsyncStorage,
-	Image
+	Image,
+	TouchableOpacity
 } from 'react-native';
 import _ from 'lodash';
 
 const NearbyBusLineRow = React.createClass({
 	
-	
+	contextTypes: {
+		ChangePage: React.PropTypes.func
+	},
+
 	render: function(){		
 
 		var LineInfo = this.props.LineInfo
 
 		return(
-			<View style={styles.NearbyBusLineRow}>
-				<Text style={styles.RouteNumber}>{LineInfo.RouteNumber}</Text>
+			<TouchableOpacity style={styles.NearbyBusLineRow} onPress={_.partial(this.context.ChangePage, 2)}>
+				<Text style={styles.RouteNumber} onPress={()=> {alert("Press"); }}>{LineInfo.RouteNumber}</Text>
 				<View style={{padding:3, paddingLeft:5}}>
 					<Text style={styles.RouteName}>{LineInfo.RouteName}</Text>
 					<Text style={styles.Headsign}>{LineInfo.RouteHeadsign}</Text>
 				</View>
-			</View>
+			</TouchableOpacity>
 		);
 	}
 

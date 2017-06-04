@@ -31,9 +31,10 @@ const bustl = React.createClass({
 		}
 	},
 
-	ChangePage: function(PageToLoad){
+	ChangePage: function(PageToLoad, Props = {}){
 		this.setState({
-			CurrentPage: PageToLoad
+			CurrentPage: PageToLoad,
+			CurrentPageProps: Props,
 		});
 	},
 
@@ -46,6 +47,9 @@ const bustl = React.createClass({
 				break;
 			case 1:
 				ComponentToLoad = <ChooseRoutePage />;
+				break;
+			case 2:
+				ComponentToLoad = <Page1 onChangePage={this.ChangePage} />
 			default:
 				break;
 		}
