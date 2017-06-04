@@ -23,9 +23,7 @@ const ProgressBar = React.createClass({
 			CurrentStep: this.props.CurrentStep
 		}
 	},
-
-
-
+	
 	render: function(){
 
 		return(
