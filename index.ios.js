@@ -11,6 +11,8 @@ import ChooseRoutePage from './views/choose_route_page';
 import ChooseEndingStopPage from './views/choose_ending_stop_page';
 import Page3 from './views/page_3';
 
+import CallApi from './js/api';
+
 const bustl = React.createClass({
 	childContextTypes: {
 		ChangePage: React.PropTypes.func,
@@ -27,6 +29,12 @@ const bustl = React.createClass({
 			CurrentPage: 0,
 			CurrentPageProps: {}
 		};
+	},
+
+	componentDidMount: function(){
+		CallApi("GetAllStopsForTrip", { TripId: "2250771" }, function(Result){
+			console.log("Result", Result);
+		});
 	},
 
 	ChangePage: function(PageToLoad, Props = {}){
