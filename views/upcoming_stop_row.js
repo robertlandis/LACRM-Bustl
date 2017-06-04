@@ -23,21 +23,26 @@ const UpcomingStopRow = React.createClass({
 
 		if(this.props.StopIndex == 0){
 			return(
-				<View style={styles.UpcomingStopRow}>
-					<Text style={{fontSize:36}}>•</Text>
-					<Text style={styles.Headsign}>{StopInfo.StopName}</Text>
+				<View style={[styles.UpcomingStopRow, {justifyContent:'flex-start'}]}>
+					<Text style={styles.BulletPoint}>•</Text>
+					<View style={{flexDirection:'column', justifyContent:'space-around'}}>
+						<Text style={{fontSize:16}}>Starting point:</Text>
+						<Text style={[styles.Headsign, {top:-5}]}>{StopInfo.StopName}</Text>
+					</View>
 				</View>
 			);
 		} else {
 			return(
 				<TouchableOpacity style={styles.UpcomingStopRow} onPress={_.partial(this.context.ChangePage, 0)}>
 					<View style={{flexDirection:'row', justifyContent:'flex-start'}}>
-						<Text style={{fontSize:36}}>•</Text>
-						<Text style={styles.Headsign}>{StopInfo.StopName}</Text>
+						<Text style={styles.BulletPoint}>•</Text>
+						<View style={{flexDirection:'column', justifyContent:'space-around'}}>
+							<Text style={styles.Headsign}>{StopInfo.StopName}</Text>
+						</View>
 					</View>
-					<View style={{padding:3, paddingLeft:5}}>
-						<Text style={styles.Extrainfo}>{StopInfo.MinutesAway}</Text>
-						<Text style={styles.Headsign}>{this.props.StopIndex}</Text>
+					<View style={{padding:3, paddingLeft:5, paddingRight:10}}>
+						<Text style={styles.Extrainfo}>{StopInfo.MinutesAway} mins</Text>
+						<Text style={styles.Extrainfo}>{this.props.StopIndex} stops</Text>
 					</View>
 				</TouchableOpacity>
 			);
@@ -48,6 +53,13 @@ const UpcomingStopRow = React.createClass({
 
 const styles = StyleSheet.create({
 
+	BulletPoint: {
+		fontSize:36,
+		fontWeight:'bold',
+		paddingRight:15,
+		color:"#aaaaaa"
+	},
+
 	UpcomingStopRow: {
 		flexDirection:'row',
 		justifyContent:'space-between',
@@ -55,6 +67,7 @@ const styles = StyleSheet.create({
 		paddingLeft:15,
 		width:'100%',
 		height:60,
+		paddingLeft:10
 	},
 
 	RouteNumber: {
@@ -73,6 +86,11 @@ const styles = StyleSheet.create({
 	Headsign: {
 		fontSize: 20,
 		color:'black'
+	},
+
+	Extrainfo: {
+		fontSize:14,
+		color:"#aaaaaa"
 	}
 
 });
