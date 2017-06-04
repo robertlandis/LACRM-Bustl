@@ -20,6 +20,7 @@ const Page1 = React.createClass({
 	},
 
 	render: function(){
+		
 		return(
 		<View>
 			<View style={styles.header}>
