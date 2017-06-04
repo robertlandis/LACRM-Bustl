@@ -16,13 +16,6 @@ import Page1 from './views/page_1';
 export default class bustl2 extends Component {
 
 	render() {
-		/*return (
-            <View style={styles.container}>
-              <Button title="Click me to start" onPress={_.bind(this.StartTrackingLocation, this)}/>
-              <Button title="Click me to stop" onPress={_.bind(this.StopTrackingLocation, this)}/>
-            </View>
-		);*/
-
     return (
       <View style={styles.container}>
         <Page1 />

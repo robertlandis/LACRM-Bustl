@@ -29,16 +29,17 @@ const styles = StyleSheet.create({
 	button: {
 		flexDirection: 'row',
 		justifyContent: 'center',
-		height: 37,
-		width: 275,
-		padding: 8,
-		backgroundColor: '#DBDFE0',
+		height: 110,
+		width: 325,
+		padding: 27,
+		backgroundColor: '#e67e22',
 		alignItems: 'center',
-		fontSize: 17,
+		fontSize: 48,
 		fontFamily: 'Roboto',
+		color: 'white',
 		textAlign: 'center',
-		color: '#202020',
-		fontWeight: '500'
+		fontWeight: 'bold',
+		textShadowColor: 'black'
 	}
 });
 
