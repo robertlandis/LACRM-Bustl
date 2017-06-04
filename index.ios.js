@@ -64,7 +64,7 @@ const bustl = React.createClass({
 		}
 
 		return (
-			<View key={key} style={styles.container}>
+			<View style={styles.container}>
 				{ComponentToLoad}
 			</View>
 		);
