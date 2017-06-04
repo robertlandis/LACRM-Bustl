@@ -19,7 +19,7 @@ const ChooseRoutePage = React.createClass({
 	
 	getInitialState: function(){
 		return {
-			"NearbyRoutes":null
+			"NearbyRoutes":[]
 		}
 	},
 
